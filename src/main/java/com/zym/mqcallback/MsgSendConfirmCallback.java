@@ -7,7 +7,7 @@ import org.springframework.lang.Nullable;
 /**
  * @author wangliang
  * @date 2019/5/7 0007
- * 消息发送带交换机确认机制
+ * 消息发送到交换机确认机制
  */
 public class MsgSendConfirmCallback implements RabbitTemplate.ConfirmCallback {
     @Override

@@ -24,4 +24,22 @@ public class ApplicationTests {
 		sender.sendMsg(id,message);
 	}
 
+	@Test
+	public void myDemo1() {
+		String id = UUID.randomUUID().toString();
+		String message = "this is fanout message";
+		sender.sendFanoutMsg(id,message);
+	}
+
+	@Test
+	public void myDemo2() {
+		String id = UUID.randomUUID().toString();
+		String message1 = "this is topic message abcRoutingKey";
+		String message2 = "this is topic message defRoutingKey";
+		sender.sendTopicMsg1(id,message1);
+		sender.sendTopicMsg2(id,message2);
+
+	}
+
+
 }

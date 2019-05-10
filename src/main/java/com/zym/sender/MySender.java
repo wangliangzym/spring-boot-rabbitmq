@@ -17,7 +17,7 @@ public class MySender {
     private RabbitTemplate rabbitTemplate;
 
     /**
-     * 消息发送
+     * direct消息发送
      * @param uuid
      * @param message
      */
@@ -25,4 +25,29 @@ public class MySender {
         CorrelationData correlationId = new CorrelationData(uuid);
         rabbitTemplate.convertAndSend(RabbitConfig.EXCHANGE,RabbitConfig.ROUTINGKEY1,message,correlationId);
     }
+
+    /**
+     * fanout消息发送
+     * @param uuid
+     * @param message
+     */
+    public void sendFanoutMsg(String uuid,Object message){
+        CorrelationData correlationId = new CorrelationData(uuid);
+        rabbitTemplate.convertAndSend(RabbitConfig.FANOUTEXCHANGE,"",message,correlationId);
+    }
+
+    /**
+     * 发送topic消息
+     * @param uuid
+     * @param message
+     */
+    public void sendTopicMsg1(String uuid,Object message){
+        CorrelationData correlationId = new CorrelationData(uuid);
+        rabbitTemplate.convertAndSend(RabbitConfig.TOPICEXCHANGE,"abc.topic",message,correlationId);
+    }
+    public void sendTopicMsg2(String uuid,Object message){
+        CorrelationData correlationId = new CorrelationData(uuid);
+        rabbitTemplate.convertAndSend(RabbitConfig.TOPICEXCHANGE,"def.topic",message,correlationId);
+    }
+
 }
